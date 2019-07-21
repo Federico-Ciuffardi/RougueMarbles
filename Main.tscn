@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Chip/PlayableChip/PlayableChip.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Chip/NonPlayableChip/NonPlayableChip.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Wall/Wall.tscn" type="PackedScene" id=4]
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="PlayeableChip2" parent="World" instance=ExtResource( 2 )]
+position = Vector2( 673.146, 141.884 )
+
+[node name="NonPlayeableChip2" parent="World" instance=ExtResource( 3 )]
+position = Vector2( 878.173, 435.732 )
+
+[node name="PlayeableChip" parent="World" instance=ExtResource( 2 )]
+position = Vector2( 250, 250 )
+
+[node name="NonPlayeableChip" parent="World" instance=ExtResource( 3 )]
+position = Vector2( 70.9768, 405.396 )
+
+[node name="Wall" parent="World" instance=ExtResource( 4 )]
+position = Vector2( 514.523, 2.77854 )
+scale = Vector2( 17, 1 )
+
+[node name="Wall2" parent="World" instance=ExtResource( 4 )]
+position = Vector2( 510.627, 598.872 )
+scale = Vector2( 17, 1 )
+
+[node name="Wall3" parent="World" instance=ExtResource( 4 )]
+position = Vector2( 2.19415, 283.293 )
+rotation = 1.5708
+scale = Vector2( 17, 1 )
+
+[node name="Wall4" parent="World" instance=ExtResource( 4 )]
+position = Vector2( 1032.7, 361.214 )
+rotation = 1.5708
+scale = Vector2( 17, 1 )
