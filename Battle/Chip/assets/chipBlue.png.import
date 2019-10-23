@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chipBlue.png-703de9972ebdab0b1459fe1a4547fdd0.stex"
+path="res://.import/chipBlue.png-b733d0660c7e64481c0360e73c5f4123.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Chip/chipBlue.png"
-dest_files=[ "res://.import/chipBlue.png-703de9972ebdab0b1459fe1a4547fdd0.stex" ]
+source_file="res://Battle/Chip/assets/chipBlue.png"
+dest_files=[ "res://.import/chipBlue.png-b733d0660c7e64481c0360e73c5f4123.stex" ]
 
 [params]
 

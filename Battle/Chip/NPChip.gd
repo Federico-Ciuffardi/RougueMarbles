@@ -1,16 +1,15 @@
-extends Node2D
+extends "res://Battle/Chip/ChipBase.gd"
 
-onready var arrow = $Chip/GUI/Arrow
-onready var chip = $Chip
-
+onready var arrow = $GUI/Arrow
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	chip.team = 2
+	team = 2
 
-func _on_Chip_turn_started():
-	var current_pos = chip.global_position
-	var target_pos = ChipManager.get_closest_to(current_pos,1)
+func start_turn():
+	.start_turn()
+	var current_pos = global_position
+	var target_pos = battle_lib.get_closest_to(current_pos,1)
 	
 	var target_angle = (target_pos -current_pos).angle()
 	var target_prop = 1
@@ -27,6 +26,6 @@ func _on_Chip_turn_started():
 	yield(t,"timeout")
 	t.queue_free()
 	
-	chip.impulse(target_prop,target_angle)
+	impulse(target_prop,target_angle)
 	arrow.set_visibility(false)
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chipRed.png-b41a755f4fdd46012ad177c5d4a4c355.stex"
+path="res://.import/Wall.png-d34d6b9b6e92b98793641c7a6f5d814b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Chip/chipRed.png"
-dest_files=[ "res://.import/chipRed.png-b41a755f4fdd46012ad177c5d4a4c355.stex" ]
+source_file="res://Battle/Wall/Wall.png"
+dest_files=[ "res://.import/Wall.png-d34d6b9b6e92b98793641c7a6f5d814b.stex" ]
 
 [params]
 

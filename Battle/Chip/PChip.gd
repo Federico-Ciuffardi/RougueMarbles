@@ -1,7 +1,6 @@
-extends Node2D
+extends "res://Battle/Chip/ChipBase.gd"
 
-onready var arrow = $Chip/GUI/Arrow
-onready var chip = $Chip
+onready var arrow = $GUI/Arrow
 
 var MAX_FORCE_LENGHT = 200
 
@@ -9,7 +8,7 @@ var aiming = false
 var moves_remaining = false
 
 func _ready():
-	chip.team = 1
+	team = 1
 	
 func _input(event):
 	if moves_remaining:
@@ -19,7 +18,7 @@ func _input(event):
 				arrow.set_visibility(aiming)
 			if aiming:
 				var pointerPos = event.position
-				var centerPos = chip.global_position
+				var centerPos = global_position
 				
 				var iVect = centerPos-pointerPos
 				
@@ -33,8 +32,9 @@ func _input(event):
 					aiming = false
 					arrow.set_visibility(aiming)
 					
-					chip.impulse(iVectProp,iVectAngle)
+					impulse(iVectProp,iVectAngle)
 					moves_remaining = false
 
-func _on_Chip_turn_started():
+func start_turn():
+	.start_turn()
 	moves_remaining = true

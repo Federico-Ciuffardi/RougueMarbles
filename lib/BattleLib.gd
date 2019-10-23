@@ -1,36 +1,9 @@
 extends Node
 
-###chip management
-var chips = []
-
-func add_chip(chip):
-	chips.append(chip)
-
-func remove_chip(chip):
-	var i = chips.find(chip)
-	#re ajust current turn to compensate the removal
-	if i <= current_turn:
-		current_turn -= 1
-	chips.remove(i)
-
-###turn management
-
-var current_turn = 0
-
-func start_turn():
-	chips[current_turn].start_turn()
-
-func next_turn():
-	current_turn = (current_turn + 1)  % len(chips)
-	
-func end_turn():
-	next_turn()
-	start_turn()
-
-
 ###utilities functions
 func get_closest_to(point,team):
 	var first
+	var chips = BattleManager.get_chips()
 	for i in range(0,len(chips)):
 		if chips[i].team == team:
 			first = i
@@ -47,3 +20,8 @@ func get_closest_to(point,team):
 				minDistanceChip = chips[j]
 				minDistance = distance
 	return minDistanceChip.global_position
+	
+func rand_pos():
+	var x = rand_range(0,ProjectSettings.get_setting("display/window/size/width"))
+	var y = rand_range(0,ProjectSettings.get_setting("display/window/size/height"))
+	return Vector2(x,y)

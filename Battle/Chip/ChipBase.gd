@@ -3,14 +3,10 @@ extends RigidBody2D
 
 ##Controllers
 
-var turn_manager = ChipManager
-var chip_manager = ChipManager
+var battle_manager = BattleManager
+var battle_lib = BattleLib
 
 ##Own
-
-#Signals
-signal turn_started
-
 #Childs
 onready var hp_manager = $HpManager
 onready var turn_indicator = $GUI/TurnIndicator
@@ -32,24 +28,24 @@ var team = 0
 ##Initialization
 func _ready():
 	hp_manager.initialize(20)
-	chip_manager.add_chip(self)
 	
 ##Turn management
 func start_turn():
 	turn_indicator.show()
 	playing_turn = true
 	ap = 1
-	emit_signal("turn_started")
 
 func end_turn():
 	turn_indicator.hide()
 	playing_turn = false
-	turn_manager.end_turn()#turn ends when chip stops ()
+	battle_manager.end_turn()#turn ends when chip stops ()
 
 #hp<=0
 func _on_HpManager_death():
-	chip_manager.remove_chip(self)
+	battle_manager.remove_chip(self)
 	queue_free()
+	if playing_turn:
+		end_turn()
 
 ##Movement
 #apply an impuse to the chip
@@ -64,7 +60,8 @@ func stoped():
 
 #called when self collides with body
 func _on_Chip_body_entered(body):
-	if body.name == "Chip":
+	#print(body.name)
+	if body.name.find("Chip") != -1:
 		if not playing_turn:
 			var dmg = round((linear_velocity.length()+body.linear_velocity.length())/100)
 			if(dmg > 0):
