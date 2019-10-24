@@ -31,7 +31,6 @@ func _input(event):
 				if event.is_action_released("touch"):
 					aiming = false
 					arrow.set_visibility(aiming)
-					
 					impulse(iVectProp,iVectAngle)
 					moves_remaining = false
 
