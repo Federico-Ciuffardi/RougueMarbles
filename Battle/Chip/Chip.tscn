@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Battle/Chip/ChipBase.gd" type="Script" id=1]
 [ext_resource path="res://Battle/Chip/assets/chipBlue.png" type="Texture" id=2]
-[ext_resource path="res://Battle/Chip/assets/arrow.png" type="Texture" id=3]
-[ext_resource path="res://Battle/Chip/assets/Arrow.gd" type="Script" id=4]
-[ext_resource path="res://Battle/Chip/HpManager.gd" type="Script" id=5]
+[ext_resource path="res://Battle/Chip/managers/AttManager.gd" type="Script" id=3]
+[ext_resource path="res://Battle/Chip/assets/arrow.png" type="Texture" id=4]
+[ext_resource path="res://Battle/Chip/assets/Arrow.gd" type="Script" id=5]
+[ext_resource path="res://Battle/Chip/managers/HpManager.gd" type="Script" id=6]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
@@ -46,16 +47,21 @@ rotation = 1.5708
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 2 )
 
+[node name="AttManager" type="Node2D" parent="GUI/TurnIndicator"]
+rotation = -1.5708
+scale = Vector2( 6.66667, 6.66667 )
+script = ExtResource( 3 )
+
 [node name="Arrow" type="Sprite" parent="GUI"]
 visible = false
 position = Vector2( 0.126296, -0.598736 )
 scale = Vector2( 0.224741, 0.0555708 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 325, 0 )
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="HpManager" type="Node2D" parent="."]
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="GUI" type="Node2D" parent="HpManager"]
 z_index = 2
@@ -76,5 +82,7 @@ margin_right = 38.1938
 margin_bottom = -37.1301
 text = "???/???"
 align = 1
+
+[node name="Tween" type="Tween" parent="HpManager/GUI"]
 [connection signal="body_entered" from="." to="." method="_on_Chip_body_entered"]
 [connection signal="death" from="HpManager" to="." method="_on_HpManager_death"]

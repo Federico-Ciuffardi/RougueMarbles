@@ -4,3 +4,6 @@
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -87.0 ]
+}

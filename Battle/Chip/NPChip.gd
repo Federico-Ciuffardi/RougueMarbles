@@ -9,7 +9,7 @@ func _ready():
 func start_turn():
 	.start_turn()
 	var current_pos = global_position
-	var target_pos = battle_lib.get_closest_to(current_pos,1)
+	var target_pos = BattleLib.get_closest_to(current_pos,1)
 	
 	var target_angle = (target_pos -current_pos).angle()
 	var target_prop = 1

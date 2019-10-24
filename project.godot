@@ -25,6 +25,7 @@ ChipLib="*res://lib/ChipLib.gd"
 BattleLib="*res://lib/BattleLib.gd"
 BattleManager="*res://Managers/BattleManager.gd"
 PartyManager="*res://Managers/PartyManager.gd"
+RandLib="*res://lib/RandLib.gd"
 
 [input]
 

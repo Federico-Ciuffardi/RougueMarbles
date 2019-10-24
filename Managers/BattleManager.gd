@@ -14,6 +14,7 @@ func start_battle():
 		chips.push_front(chip)
 		get_tree().current_scene.add_child(chip)
 		chip.position = BattleLib.rand_pos()
+	chips.sort_custom(self,"sort")
 	start_turn()
 
 ##turn management
@@ -56,6 +57,9 @@ func battle_end():
 	chips.clear()
 	current_turn = 0
 	
+func sort(a,b):
+	return a.att_manager.get("AGI") < b.att_manager.get("AGI")
+
 ##turn management
 func start_turn():
 	chips[current_turn].start_turn()
