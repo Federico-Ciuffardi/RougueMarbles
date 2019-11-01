@@ -9,7 +9,7 @@ func start_battle():
 		chips.push_front(chip)
 		get_tree().current_scene.add_child(chip)
 		chip.position = BattleLib.rand_pos()
-	for i in range(0,rand_range(1,2)):
+	for i in range(0,rand_range(7,11)):
 		var chip = ChipLib.create_npc()
 		chips.push_front(chip)
 		get_tree().current_scene.add_child(chip)
@@ -39,6 +39,10 @@ func end_turn():
 ##getters
 func get_chips():
 	return chips
+	
+func get_turn_chip():
+	return chips[current_turn]
+#utils
 
 func remove_chip(chip):
 	#re ajust current turn to compensate the removal

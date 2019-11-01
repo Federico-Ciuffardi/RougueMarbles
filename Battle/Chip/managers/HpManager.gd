@@ -32,7 +32,8 @@ func set_hp(newHp):
 func damage(dmg):
 	if dmg > 0:
 		var dmg_label = DmgLabel.instance()
-		self.add_child(dmg_label)
+		get_tree().current_scene.add_child(dmg_label)
+		dmg_label.rect_position += global_position
 		dmg_label.text = "-"+str(dmg)
 		var start_color = Color(0.75, 0, 0, 1.0)
 		var end_color = Color(0.75, 0, 0, 0.0)

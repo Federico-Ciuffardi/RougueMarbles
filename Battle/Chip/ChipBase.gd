@@ -58,12 +58,16 @@ func stoped():
 #called when self collides with body
 func _on_Chip_body_entered(body):
 	if body.name.find("Chip") != -1:
-		if not playing_turn:
+		if not playing_turn and team != BattleManager.get_turn_chip().team:
 			var base_dmg = (linear_velocity.length()+body.linear_velocity.length())/200
 			var dmg = round(base_dmg*(1+body.att_manager.get("STR")/3))
 			hp_manager.damage(dmg)
 	elif body.name.begins_with("Wall"):
-		var dmg = round(linear_velocity.length()/100)
+		if not playing_turn:
+			var dmg = round(linear_velocity.length()/100)
+			hp_manager.damage(dmg)
+	elif body.name.begins_with("Trap"):
+		var dmg = round(linear_velocity.length()/25)
 		hp_manager.damage(dmg)
 		
 #tick delta time after last tick 
